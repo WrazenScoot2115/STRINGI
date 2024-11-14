@@ -2,49 +2,31 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport">
-    <title>Sprawdź tekst</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prosty Program</title>
 </head>
 <body>
-    <h1>Sprawdź tekst</h1>
-    <label for="tekst">Wprowadź tekst:</label><br>
-    <input type="text" id="tekst" name="tekst" size="50"><br>
-    <label for="znak">Wprowadź znak do sprawdzenia:</label><br>
-    <input type="text" id="znak" name="znak" maxlength="1"><br>
-    <button onclick="sprawdzTekst()">Sprawdź</button>
+    <h1>Prosty Program</h1>
+    <label for="tekst">Wprowadź tekst:</label>
+    <input type="text" id="tekst" name="tekst"><br><br>
+    <label for="znak">Wprowadź znak:</label>
+    <input type="text" id="znak" name="znak" maxlength="1"><br><br>
+    <button onclick="sprawdz()">Sprawdź</button>
 
-    <h2>Wyniki:</h2>
-    <p id="dlugoscTekstu"></p>
-    <p id="pozycjeZnaku"></p>
+    <p id="wynik"></p>
 
     <script>
-        // Funkcja do obliczania długości tekstu
-        function tekstDlugi(tekst) {
-            return tekst.length;
-        }
-
-        // Funkcja do sprawdzania, czy znak znajduje się w tekście oraz na której pozycji
-        function znajdzZnak(tekst, znak) {
-            let pozycje = [];
-            for (let i = 0; i < tekst.length; i++) {
-                if (tekst[i] === znak) {
-                    pozycje.push(i);
-                }
-            }
-            if (pozycje.length > 0) {
-                return `Znak '${znak}' znajduje się na pozycjach: ${pozycje.join(', ')}`;
-            } else {
-                return `Znak '${znak}' nie znajduje się w tekście.`;
-            }
-        }
-
-        // Funkcja do obsługi przycisku "Sprawdź"
-        function sprawdzTekst() {
+        function sprawdz() {
             let tekst = document.getElementById('tekst').value;
             let znak = document.getElementById('znak').value;
+            let dlugosc = tekst.length;
+            let pozycja = tekst.indexOf(znak);
 
-            document.getElementById('dlugoscTekstu').innerText = `Długość tekstu: ${tekstDlugi(tekst)}`;
-            document.getElementById('pozycjeZnaku').innerText = znajdzZnak(tekst, znak);
+            if (pozycja !== -1) {
+                document.getElementById('wynik').innerText = `Długość tekstu: ${dlugosc}, Znak '${znak}' znajduje się na pozycji: ${pozycja}`;
+            } else {
+                document.getElementById('wynik').innerText = `Długość tekstu: ${dlugosc}, Znak '${znak}' nie znajduje się w tekście.`;
+            }
         }
     </script>
 </body>
