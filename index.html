@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>String</title>
+</head>
+<body>
+    <header>
+        <center><h1>Program</h1></center>
+    </header>
+    <script>
+// Funkcja do obliczania długości tekstu
+function tekstDlugi(tekst) {
+    return tekst.length;
+}
+
+// Funkcja do sprawdzania, czy znak znajduje się w tekście oraz na której pozycji
+function znajdzZnak(tekst, znak) {
+    let pozycje = [];
+    for (let i = 0; i < tekst.length; i++) {
+        if (tekst[i] === znak) {
+            pozycje.push(i);
+        }
+    }
+    if (pozycje.length > 0) {
+        return `Znak '${znak}' znajduje się na pozycjach: ${pozycje.join(', ')}`;
+    } else {
+        return `Znak '${znak}' nie znajduje się w tekście.`;
+    }
+}
+
+// Przykładowe użycie
+let mojTekst = "Witaj w W3Schools!";
+let znak = 'w';
+
+console.log(`Długość tekstu: ${tekstDlugi(mojTekst)}`);
+console.log(znajdzZnak(mojTekst, znak));
+    </script>
+</body>
+</html>
